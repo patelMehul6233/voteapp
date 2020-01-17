@@ -1,0 +1,77 @@
+<!-- <div class="logout-button" *ngIf="adminSaveData">
+  <p class="text-right" click="adminlogout();">Logout</p>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5 class="text-center m-30-tb">Admin</h5>
+      <div class="text-right">
+        <a [routerLink]="['/result']">
+          Result List
+        </a>
+      </div>
+      <form [formGroup]="adminForm" name="adminFrm" (ngSubmit)="adminData(adminCtrl);">
+        <div class="row">
+          <div class="col input-name">Username:</div>
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <input matInput formControlName="name" [(ngModel)]="adminCtrl.name" placeholder="..Enter Name..">
+            </mat-form-field>
+            <div *ngIf="submittedForm && adminFrms.name.errors" class="error-message">
+              <div *ngIf="adminFrms.name.errors.required" class="error-message"> Please fill the name field.
+               </div>
+               </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col input-name">Password:</div>
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <input matInput formControlName="password" [(ngModel)]="adminCtrl.password" placeholder="..Enter Password..">
+            </mat-form-field>
+            <div *ngIf="submittedForm && adminFrms.password.errors" class="error-message">
+              <div *ngIf="adminFrms.password.errors.required" class="error-message"> Please fill the password field.
+               </div>
+               </div>
+          </div>
+        </div>
+        <div class="row m-30-tb">
+          <div class="col input-name">
+            <button mat-raised-button color="primary">Submit</button>
+          </div>
+          <div class="col">
+            <button mat-raised-button color="primary">Cancel</button>
+          </div>
+        </div>
+      </form>
+      <!-- <form  name="addPollFrm" [formGroup]="pollGroup" (ngSubmit)="addPollData(pollCtrl);" *ngIf="adminSaveData">
+        <div class="row">
+          <div class="col input-name">Select Poll Number:</div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>---Choose an option---</mat-label>
+              <select matNativeControl formControlName="pollnum" [(ngModel)]="pollCtrl.pollNum"> 
+                <option value="" selected></option>
+                <option *ngFor="let i of pollNumList" [value]="i">{{i}}</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col input-name">Poll Member Details:</div>
+          <div class="col">
+            <input type="file" formControlName="pollcandetail" class="form-control" (change)="uploadedFile($event)" placeholder="Upload file" accept=".xlsx">
+          </div>
+        </div>
+        <div class="row m-30-tb">
+          <div class="col input-name">
+            <button mat-raised-button color="primary">Submit</button>
+          </div>
+          <div class="col">
+            <button mat-raised-button color="primary">Cancel</button>
+          </div>
+        </div>
+      </form> -->
+    </div>
+  </div>
+</div>

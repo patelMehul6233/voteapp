@@ -1,0 +1,52 @@
+<h5 class="text-center" *ngIf="showCandiddateData">{{timing}}</h5>
+<h5 class="text-center" *ngIf="showCandiddateData">{{timeSplase}}</h5>
+<div class="container" *ngIf="!thanksmsg">
+  
+  <h4 class="text-center m-30-tb">Welcome  <span style="color: blue;">{{showUserData.name}}</span> <span>  Select Poll</span></h4>
+  <div class="row" *ngIf="!showCandiddateData">
+    <div class="col ">
+      <div class="poll-select-container center-item">
+      <mat-form-field>
+        <mat-label>---Choose an option---</mat-label>
+        <select matNativeControl [(ngModel)]="selectId" (change)="selectionOfId(selectId);">
+          <option value="" selected></option>
+          <option *ngFor="let i of showPollData" value="{{i.pollNum}}">{{i.pollNum}}</option>
+        </select>
+      </mat-form-field>
+    </div>
+    </div>
+  </div>
+ 
+  <div class="row" *ngIf="showCandiddateData">
+    <!-- <p class="text-center"> below shown poll number {{showPollData[0].pollNum}}</p> -->
+    <div class="col" *ngFor="let i of showPollData[0].candidateDetail">
+      
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{i.name}}</mat-card-title>
+          <mat-card-subtitle>{{i.profession}}</mat-card-subtitle>
+        </mat-card-header>
+        <div style="width: 250px;height:250px;">
+        <img mat-card-image src="{{i.img}}" alt="{{i.name}}" style="width:100%;">
+      </div>
+        <mat-card-content>
+          <p style="overflow: hidden;
+          text-overflow: ellipsis;
+          height: 45px;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;">
+            {{i.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button [disabled]="!checkExpButton" mat-button class="btn btn-primary" (click)="addVote(i,showPollData);">Add Vote</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<h4 class="center-item" *ngIf="thanksmsg">
+thanks for vote
+</h4>

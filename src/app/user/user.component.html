@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5 class="text-center m-30-tb">Registration For Voting</h5>
+      <form  [formGroup]="userForm" name="userFrm" (ngSubmit)="userData(userFormDetail);">
+        <div class="row">
+          <div class="col input-name">Name:</div>
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <input matInput formControlName ="name" [(ngModel)]="userFormDetail.name" placeholder="..Enter Name..">
+            </mat-form-field>
+            <div *ngIf="submitted && frms.name.errors" class="error-message">
+             <div *ngIf="frms.name.errors.required" class="error-message"> Please fill the name field
+              </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col input-name">Date Of Birth:</div>
+          <div class="col">
+            <mat-form-field>
+              <input matInput formControlName ="dob" [matDatepicker]="picker" placeholder="Input & change events"
+                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf="submitted && frms.dob.errors" class="error-message">
+              <div *ngIf="frms.dob.errors.required" class="error-message"> Please select Date of birth
+               </div>
+               </div>
+            <!-- <div class="example-events">
+              <div *ngFor="let e of events">{{e}}</div>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col input-name">Goverment Id:</div>
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>---Choose an option---</mat-label>
+                  <select matNativeControl formControlName ="selection" (change)="selectionOfGovId(userFormDetail.idType)" [(ngModel)]="userFormDetail.idType">
+                    <option value="" selected></option>
+                    <option value="EC">Eletion Card</option>
+                    <option value="AC" >Aadhar Card</option>
+                    <option value="DL">Driving Licence</option>
+                  </select>
+                </mat-form-field>
+                <div *ngIf="submitted && frms.selection.errors" class="error-message">
+                  <div *ngIf="frms.selection.errors.required" class="error-message"> 
+                    Please Select Goverment Id
+                   </div>
+                </div>
+              </div>
+              <div class="col" >
+                <!-- <div class="col" *ngIf="userFormDetail.selectId === 'AC'"> -->
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Card Number" [formControl]="idtype" [(ngModel)]="userFormDetail.number">
+                </mat-form-field>
+                <div *ngIf="touchSubmitted && idtype.errors !== null">
+                  <div *ngIf="idtype.errors.required" class="error-message"> 
+                    Please fill the  type of Id numbers.
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row m-30-tb">
+          <div class="col input-name">
+            <button mat-raised-button color="primary">Submit</button>
+          </div>
+          <div class="col">
+            <button mat-raised-button color="primary">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

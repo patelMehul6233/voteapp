@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.center-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-name{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.error-message{
+    color: red;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.m-0{
+    margin: 0;
+}
+.m-l-0{
+    margin-left: 0;
+}
+.m-r-0{
+    margin-right:0; 
+}
+.m-30-tb{
+    margin: 30px 0;
+}
+.p-0{
+    padding: 0;
+}
+.p-l-0{
+    padding-left: 0;
+}
+.p-r-0{
+    padding-right:0; 
+}
+.p-r-15px{
+    padding-right: 15px;
+}
+
+.logout-decoration{
+    cursor: pointer;
+    color: aqua;
+    font-size: 18px;
+
+}

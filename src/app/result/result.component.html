@@ -1,0 +1,46 @@
+<div class="logout-button text-right p-r-15px">
+  hii {{showAdminData.name}} You want to <span  (click)="adminlogout();" class="logout-decoration">Logout</span>
+ </div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5 class="text-center m-30-tb">Vote Result</h5>
+      <h6 class="text-center">welcome {{showAdminData.name}} in your panel</h6>
+
+      <div class="m-30-tb">
+        <div class="row">
+          <div class="col" *ngFor="let poll of showpollData;let i=index; let o= odd; let e=even;">
+             <ng-container >
+               <button type="button" class="btn btn-primary w-100" (click)="selectPollResult(poll)" 
+               [ngStyle]="{'background': getColor(i)}" >{{poll.pollNum}}</button>
+             </ng-container>
+          </div>
+        </div>
+      </div>
+      <!-- {{pollWiseCandidateDetail | json}}
+      {{showfinalresult}} -->
+      <div class="m-30-tb" *ngIf="showfinalresult">
+        <h4 class="text-center">Result of poll Number: {{pollWiseCandidateDetail.pollNum}}</h4>
+        <!-- <h5 class="text-center">  {{timeSplase}}</h5> -->
+        <h5 class="text-center">{{jsonVariable['values' + pollWiseCandidateDetail.pollNum]}}</h5>
+        <h4 class="text-center" *ngIf="finalResultData!== undefined && finalResultData !== null">
+          The winner is {{finalResultData.name}} and total vote is {{finalResultData.numvote}}
+        </h4>
+        <h4 class="text-center" *ngIf="finalResultData === null">
+          Nobody can vote......
+        </h4>
+        <div class="row">
+          <div class="col" *ngFor="let candidate of pollWiseCandidateDetail.candidateDetail">
+             <ng-container >
+               <h5 *ngIf="candidate.numOFVote === 0">{{candidate.name}}: total votes: 0.00 %</h5>
+               <h5 *ngIf="candidate.numOFVote !== 0">{{candidate.name}}: total votes: {{(candidate.numOFVote*100/pollWiseCandidateDetail.totalVotesBoth).toFixed(2)}} %</h5>
+             </ng-container>
+          </div>
+         
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

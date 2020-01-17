@@ -1,0 +1,44 @@
+<div class="logout-button text-right p-r-15px">
+ hii {{showAdminData.name}} You want to <span  (click)="adminlogout();" class="logout-decoration">Logout</span>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5 class="text-center m-30-tb">Admin</h5>
+      <h6 class="text-center">welcome {{showAdminData.name}} in your panel</h6>
+      <div class="text-right">
+        <a [routerLink]="['/result']">
+          Result List
+        </a>
+      </div>
+      <form  name="addPollFrm" [formGroup]="pollGroup" (ngSubmit)="addPollData(pollCtrl);">
+        <div class="row">
+          <div class="col input-name">Select Poll Number:</div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>---Choose an option---</mat-label>
+              <select matNativeControl formControlName="pollnum" [(ngModel)]="pollCtrl.pollNum"> 
+                <option value="" selected></option>
+                <option *ngFor="let i of pollNumList" [value]="i">{{i}}</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col input-name">Poll Member Details:</div>
+          <div class="col">
+            <input type="file" formControlName="pollcandetail" class="form-control" (change)="uploadedFile($event)" placeholder="Upload file" accept=".xlsx">
+          </div>
+        </div>
+        <div class="row m-30-tb">
+          <div class="col input-name">
+            <button mat-raised-button color="primary">Submit</button>
+          </div>
+          <div class="col">
+            <button mat-raised-button color="primary">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
